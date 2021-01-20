@@ -200,7 +200,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: 'networkErrorHandler',
+              sign: '带有堆栈的JS报错信息',
               // 错误对象
               error: e.error,
               // 错误信息
@@ -220,7 +220,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: 'networkErrorHandler',
+              sign: '不带有堆栈的JS报错信息',
               // 错误信息
               message: e.message,
               // 错误行号
@@ -239,7 +239,7 @@ Logger.prototype.baseErrorHandler = function () {
           logCreateDate: new Date(),
           url: window.location.href,
           message: {
-            sign: 'networkErrorHandler',
+            sign: 'JS报错，无法捕获到详细的报错信息',
             message: e.type
           }
         })
@@ -267,7 +267,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: 'networkErrorHandler',
+              sign: '带有堆栈的JS报错信息',
               // 错误对象
               error: error,
               // 错误信息
@@ -287,7 +287,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: 'networkErrorHandler',
+              sign: '不带有堆栈的JS报错信息',
               // 错误信息
               message: message,
               // 错误行号
@@ -307,7 +307,7 @@ Logger.prototype.baseErrorHandler = function () {
           logCreateDate: new Date(),
           url: window.location.href,
           message: {
-            sign: 'networkErrorHandler',
+            sign: 'JS报错，无法捕获到详细的报错信息',
             message: ''
           }
         });
