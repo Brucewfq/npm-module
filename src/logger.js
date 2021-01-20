@@ -518,7 +518,7 @@ Logger.prototype.saveLogger = function(callback) {
   //
   const param = {
     logList: tempLogList,
-    currentAccount: this.options.currentDirection,
+    currentAccount: this.options.currentAccount,
     currentName: this.options.currentName,
     loginDate: this.options.loginDate,
     tokenId: this.options.tokenId,
