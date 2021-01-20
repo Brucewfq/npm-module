@@ -200,7 +200,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: '带有堆栈的JS报错信息',
+              sign: '带有堆栈的JS报错信息，触发事件：addEventListener',
               // 错误对象
               error: e.error,
               // 错误信息
@@ -220,7 +220,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: '不带有堆栈的JS报错信息',
+              sign: '不带有堆栈的JS报错信息，触发事件：addEventListener',
               // 错误信息
               message: e.message,
               // 错误行号
@@ -239,8 +239,9 @@ Logger.prototype.baseErrorHandler = function () {
           logCreateDate: new Date(),
           url: window.location.href,
           message: {
-            sign: 'JS报错，无法捕获到详细的报错信息',
-            message: e.type
+            sign: 'JS报错，无法捕获到详细的报错信息，触发事件：addEventListener',
+            message: e.type,
+            target: e.target
           }
         })
       }
@@ -267,7 +268,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: '带有堆栈的JS报错信息',
+              sign: '带有堆栈的JS报错信息，触发事件：addEventListener',
               // 错误对象
               error: error,
               // 错误信息
@@ -287,7 +288,7 @@ Logger.prototype.baseErrorHandler = function () {
             logCreateDate: new Date(),
             url: window.location.href,
             message:{
-              sign: '不带有堆栈的JS报错信息',
+              sign: '不带有堆栈的JS报错信息，触发事件：onerror',
               // 错误信息
               message: message,
               // 错误行号
@@ -307,8 +308,14 @@ Logger.prototype.baseErrorHandler = function () {
           logCreateDate: new Date(),
           url: window.location.href,
           message: {
-            sign: 'JS报错，无法捕获到详细的报错信息',
-            message: ''
+            sign: 'JS报错，无法捕获到详细的报错信息，触发事件：onerror',
+            message: '',
+            // 错误行号
+            lineno: lineno,
+            // 错误列号
+            colno: colno,
+            // 错误文件名
+            filename: filename
           }
         });
       }
@@ -362,6 +369,9 @@ Logger.prototype.send = function (item) {
   if (!tempItem.logCreateDate) {
     tempItem.logCreateDate = new Date();
   }
+  if (!tempItem.url) {
+    tempItem.url = window.location.href;
+  }
   this.loggerList.push(tempItem)
   //
   if (this.options.saveToLocalstorage) {
@@ -377,6 +387,9 @@ Logger.prototype.debug = function (item) {
   tempItem.logLevel = 'debug';
   if (!tempItem.logCreateDate) {
     tempItem.logCreateDate = new Date();
+  }
+  if (!tempItem.url) {
+    tempItem.url = window.location.href;
   }
   this.loggerList.push(tempItem)
   //
@@ -394,6 +407,9 @@ Logger.prototype.info = function (item) {
   if (!tempItem.logCreateDate) {
     tempItem.logCreateDate = new Date();
   }
+  if (!tempItem.url) {
+    tempItem.url = window.location.href;
+  }
   this.loggerList.push(tempItem)
   //
   if (this.options.saveToLocalstorage) {
@@ -410,6 +426,9 @@ Logger.prototype.warn = function (item) {
   if (!tempItem.logCreateDate) {
     tempItem.logCreateDate = new Date();
   }
+  if (!tempItem.url) {
+    tempItem.url = window.location.href;
+  }
   this.loggerList.push(tempItem)
   //
   if (this.options.saveToLocalstorage) {
@@ -425,6 +444,9 @@ Logger.prototype.error = function (item) {
   tempItem.logLevel = 'error';
   if (!tempItem.logCreateDate) {
     tempItem.logCreateDate = new Date();
+  }
+  if (!tempItem.url) {
+    tempItem.url = window.location.href;
   }
   this.loggerList.push(tempItem);
   //
