@@ -339,8 +339,6 @@ Logger.prototype.promiseErrorHandler = function () {
    */
   window.addEventListener("unhandledrejection", (e) => {
     e.preventDefault()
-    console.log('unhandledrejection is running...');
-    console.log(e.reason);
     const item = Object.assign({}, this.baseInfo, {
       id: generateUuid(),
       logLevel: 'error',
